@@ -1,0 +1,383 @@
+:root {
+  --blue-main: #0284c7;      /* Biru cerah */
+  --blue-dark: #0369a1;      /* Biru tegas */
+  --blue-soft: #e0f2fe;      /* Biru langit lembut */
+  --yellow-main: #facc15;    /* Kuning ceria */
+  --yellow-warm: #f59e0b;    /* Kuning emas hangat */
+  --yellow-soft: #fef9c3;    /* Kuning pastel lembut */
+  --bg-page: #f0f9ff;
+  --card-bg: #ffffff;
+  --text-dark: #0f172a;
+  --text-muted: #475569;
+  --border-soft: #bae6fd;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: 'Nunito', system-ui, -apple-system, sans-serif;
+}
+
+body {
+  margin: 0;
+  color: var(--text-dark);
+  background-color: var(--bg-page);
+  /* Pola bintang Islami halus sebagai latar belakang */
+  background-image:
+    radial-gradient(circle at 20px 20px, rgba(2, 132, 199, 0.08) 2px, transparent 0),
+    radial-gradient(circle at 60px 60px, rgba(250, 204, 21, 0.16) 3px, transparent 0);
+  background-size: 80px 80px;
+}
+
+.hidden { display: none !important; }
+
+.container {
+  max-width: 840px;
+  margin: 0 auto;
+  padding: 18px;
+}
+
+.center-box {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* KARTU & ELEMEN DINAMIS */
+.card {
+  background: var(--card-bg);
+  border-radius: 24px;
+  padding: 24px;
+  margin-bottom: 18px;
+  box-shadow: 0 10px 25px -5px rgba(2, 132, 199, 0.12);
+  border: 2px solid var(--border-soft);
+  transition: transform 0.2s ease;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+  border-top: 6px solid var(--yellow-main);
+}
+
+.islamic-badge {
+  width: 76px;
+  height: 76px;
+  margin: 0 auto 12px;
+  background: linear-gradient(135deg, var(--blue-main), #38bdf8);
+  border-radius: 26px;
+  transform: rotate(-4deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 16px rgba(2, 132, 199, 0.25);
+  border: 3px solid var(--yellow-main);
+  position: relative;
+}
+
+.islamic-badge.small {
+  width: 56px;
+  height: 56px;
+  margin: 0;
+  border-radius: 18px;
+}
+
+.moon-icon { font-size: 36px; transform: rotate(4deg); }
+.star-icon { position: absolute; top: 6px; right: 8px; font-size: 16px; }
+
+h1, h2, h3 {
+  margin-top: 0;
+  color: var(--blue-dark);
+  font-weight: 800;
+}
+
+.subtitle {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin-top: -6px;
+  margin-bottom: 18px;
+}
+
+/* FORM & INPUT */
+label {
+  display: block;
+  text-align: left;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--blue-dark);
+  margin: 12px 0 6px;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border: 2px solid var(--border-soft);
+  border-radius: 16px;
+  font-size: 14px;
+  background: #f8fafc;
+  transition: all 0.2s ease;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border-color: var(--blue-main);
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.15);
+}
+
+/* TOMBOL INTERAKTIF */
+.btn-primary {
+  width: 100%;
+  margin-top: 16px;
+  padding: 13px 18px;
+  background: linear-gradient(135deg, var(--yellow-main), var(--yellow-warm));
+  color: #1e293b;
+  border: none;
+  border-radius: 18px;
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 5px 0 #d97706;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.btn-primary:hover {
+  filter: brightness(1.04);
+}
+
+.btn-primary:active {
+  transform: translateY(4px);
+  box-shadow: 0 1px 0 #d97706;
+}
+
+.btn-outline {
+  background: rgba(255, 255, 255, 0.15);
+  border: 2px solid var(--yellow-main);
+  color: #ffffff;
+  padding: 6px 14px;
+  border-radius: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.15s;
+}
+
+.btn-outline:hover {
+  background: var(--yellow-main);
+  color: var(--text-dark);
+}
+
+.btn-icon {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  border-radius: 12px;
+  padding: 6px 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* TOPBAR */
+.topbar {
+  background: linear-gradient(90deg, var(--blue-dark), var(--blue-main));
+  color: #ffffff;
+  padding: 14px 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 4px solid var(--yellow-main);
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.2);
+}
+
+.topbar-title {
+  font-weight: 800;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.topbar-user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-pill {
+  background: var(--yellow-soft);
+  color: var(--blue-dark);
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+/* BANNER SAMBUTAN & LIVE POIN */
+.header-banner {
+  background: linear-gradient(135deg, var(--blue-main), #38bdf8);
+  color: #ffffff;
+  border: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+}
+
+.header-banner h2 {
+  color: #ffffff;
+  margin-bottom: 4px;
+}
+
+.header-banner p {
+  margin: 0;
+  color: var(--yellow-soft);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.poin-pill-box {
+  background: var(--yellow-main);
+  color: var(--text-dark);
+  padding: 10px 16px;
+  border-radius: 20px;
+  text-align: center;
+  min-width: 110px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+}
+
+.poin-pill-box small {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.poin-pill-box strong {
+  font-size: 20px;
+  font-weight: 800;
+}
+
+/* KARTU INDIKATOR AMALAN */
+.indikator-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.ind-card {
+  background: #ffffff;
+  border: 2px solid var(--border-soft);
+  border-radius: 20px;
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.2s, background 0.2s;
+}
+
+.ind-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--blue-main);
+}
+
+.ind-card:active {
+  transform: scale(0.97);
+}
+
+.ind-card.checked {
+  border-color: var(--yellow-warm);
+  background: linear-gradient(135deg, var(--yellow-soft), #ffffff);
+  box-shadow: 0 6px 15px rgba(245, 158, 11, 0.18);
+}
+
+.cat-tag {
+  display: inline-block;
+  background: var(--blue-soft);
+  color: var(--blue-dark);
+  font-size: 11px;
+  font-weight: 800;
+  padding: 2px 9px;
+  border-radius: 999px;
+  margin-top: 5px;
+}
+
+.ind-card.checked .cat-tag {
+  background: var(--yellow-main);
+  color: var(--text-dark);
+}
+
+.ind-check-circle {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  border: 2.5px solid var(--blue-main);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 800;
+  color: #ffffff;
+  transition: 0.2s;
+}
+
+.ind-card.checked .ind-check-circle {
+  background: var(--blue-main);
+  border-color: var(--blue-main);
+  transform: rotate(6deg) scale(1.08);
+}
+
+/* FORM ADMIN & LIST */
+.inline-form {
+  display: grid;
+  grid-template-columns: 2fr 1fr 85px auto;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.inline-form .btn-primary {
+  margin-top: 0;
+  width: auto;
+}
+
+.list-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 14px;
+  margin-bottom: 8px;
+  background: #f8fafc;
+  border-radius: 16px;
+  border: 1px solid var(--border-soft);
+}
+
+.btn-verif {
+  background: var(--blue-main);
+  color: #ffffff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.btn-verif:hover { background: var(--blue-dark); }
+
+.error-text { color: #dc2626; font-size: 13px; font-weight: 700; margin-top: 10px; }
+.status-text { color: var(--blue-dark); font-size: 14px; font-weight: 800; margin-top: 12px; text-align: center; }
+.chart-box { max-width: 520px; margin: 0 auto; }
+
+@keyframes bounceIn {
+  0% { opacity: 0; transform: scale(0.92); }
+  100% { opacity: 1; transform: scale(1); }
+}
+.bounce-in { animation: bounceIn 0.35s ease-out; }
+
+@media (max-width: 600px) {
+  .inline-form { grid-template-columns: 1fr; }
+  .header-banner { flex-direction: column; text-align: center; }
+}
