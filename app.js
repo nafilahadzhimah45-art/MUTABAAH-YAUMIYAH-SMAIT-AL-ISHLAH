@@ -1,4 +1,4 @@
-const API_URL = 'https://script.google.com/macros/s/AKfycbx-Ee_dFBDnGsX9oda_-KmaKUmn64YD_Rx7VzRL37VLH7nsWfKy00fIkJFQrZ-HxSJU/exec';
+const API_URL = 'https://script.google.com/macros/s/AKfycbz9XVYAD6h2dHUEySOPwbkmqtR7viKr7luM0CjICBS-sFJl3gZao6kEi-jYVjkIrPBW/exec';
 
 let SESSION = JSON.parse(localStorage.getItem('mutabaah_session') || 'null');
 let INDIKATOR_LIST = [];
