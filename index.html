@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mutaba'ah Yaumiyah — SMAIT AL ISHLAH GORONTALO</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <!-- LAYAR LOGIN -->
+  <section id="view-login" class="container center-box">
+    <div class="card login-card bounce-in">
+      <div class="islamic-badge">
+        <span class="moon-icon">🌙</span>
+        <span class="star-icon">✨</span>
+      </div>
+      <h1>Mutaba'ah Yaumiyah</h1>
+      <p class="subtitle">[NAMA_SEKOLAH]</p>
+
+      <form id="form-login">
+        <label>Username</label>
+        <input type="text" id="login-username" placeholder="Ketik username kamu..." required />
+        <label>Password</label>
+        <input type="password" id="login-password" placeholder="Ketik password..." required />
+        <button type="submit" class="btn-primary btn-sound" id="btn-login">Masuk ke Dashboard 🚀</button>
+      </form>
+      <p id="login-msg" class="error-text"></p>
+    </div>
+  </section>
+
+  <!-- LAYAR GANTI PASSWORD WAJIB -->
+  <section id="view-change-pass" class="container center-box hidden">
+    <div class="card login-card bounce-in">
+      <div class="islamic-badge"><span class="moon-icon">🔐</span></div>
+      <h2>Buat Password Baru</h2>
+      <p class="subtitle">Yuk amankan akunmu dengan password baru sebelum mulai mencatat kebaikan!</p>
+      <form id="form-change-pass">
+        <label>Password Baru (Minimal 6 karakter)</label>
+        <input type="password" id="new-password" minlength="6" placeholder="Minimal 6 karakter" required />
+        <button type="submit" class="btn-primary btn-sound">Simpan Password Baru ✨</button>
+      </form>
+      <p id="changepass-msg" class="error-text"></p>
+    </div>
+  </section>
+
+  <!-- DASHBOARD UTAMA -->
+  <section id="view-dashboard" class="hidden">
+    <header class="topbar">
+      <div class="topbar-title">
+        <span class="topbar-logo">🌙</span> Mutaba'ah Yaumiyah
+      </div>
+      <div class="topbar-user">
+        <button id="btn-toggle-sound" class="btn-icon btn-sound" title="Suara Efek Aktif">🔊</button>
+        <span id="user-badge" class="user-pill"></span>
+        <button id="btn-logout" class="btn-outline btn-sound">Keluar</button>
+      </div>
+    </header>
+
+    <main class="container">
+      <!-- PANEL SANTRI -->
+      <div id="panel-santri" class="hidden">
+        <div class="card header-banner">
+          <div class="banner-text">
+            <h2 id="santri-greeting">Assalamu'alaikum!</h2>
+            <p id="santri-date"></p>
+          </div>
+          <div class="poin-pill-box">
+            <small>Poin Hari Ini</small>
+            <strong id="santri-live-poin">0 ⭐</strong>
+          </div>
+        </div>
+
+        <div id="santri-indikator-list" class="indikator-grid"></div>
+
+        <div class="card reflection-card">
+          <label>✍️ Catatan & Refleksi Kebaikan Hari Ini (Opsional)</label>
+          <textarea id="santri-catatan" rows="2" placeholder="Ceritakan kebaikan atau hal seru dalam ibadahmu hari ini..."></textarea>
+          <button id="btn-simpan-mutabaah" class="btn-primary btn-sound">Simpan Mutaba'ah Hari Ini 🌟</button>
+          <p id="santri-status-msg" class="status-text"></p>
+        </div>
+      </div>
+
+      <!-- PANEL ORANG TUA -->
+      <div id="panel-ortu" class="hidden">
+        <div class="card header-banner">
+          <div class="banner-text">
+            <h2 id="ortu-anak-nama">Ringkasan Ibadah Ananda</h2>
+            <p id="ortu-anak-info"></p>
+          </div>
+          <div class="islamic-badge small"><span class="moon-icon">📊</span></div>
+        </div>
+        <div class="card">
+          <h3>Grafik Semangat Ibadah Pekanan</h3>
+          <div class="chart-box"><canvas id="chart-ortu"></canvas></div>
+        </div>
+        <div class="card">
+          <h3>💌 Catatan Pembina / Musyrif</h3>
+          <div id="ortu-catatan-list"></div>
+        </div>
+      </div>
+
+      <!-- PANEL MUSYRIF / WALI KELAS -->
+      <div id="panel-musyrif" class="hidden">
+        <div class="card">
+          <h2>📋 Daftar Santri Binaan</h2>
+          <p class="subtitle">Klik tombol verifikasi untuk mengapresiasi laporan ibadah santri hari ini.</p>
+          <div id="musyrif-santri-list"></div>
+        </div>
+      </div>
+
+      <!-- PANEL ADMIN / KOORDINATOR PAI -->
+      <div id="panel-admin" class="hidden">
+        <div class="card">
+          <h2>🕌 Kelola Indikator Amalan PAI</h2>
+          <form id="form-tambah-indikator" class="inline-form">
+            <input type="text" id="ind-nama" placeholder="Nama amalan baru..." required />
+            <input type="text" id="ind-kategori" placeholder="Kategori (mis. Sholat)" required />
+            <input type="number" id="ind-poin" placeholder="Poin" min="1" value="10" required />
+            <button type="submit" class="btn-primary btn-sound">+ Tambah</button>
+          </form>
+          <div id="admin-indikator-list"></div>
+        </div>
+      </div>
+    </main>
+  </section>
+
+  <script src="app.js"></script>
+</body>
+</html>
